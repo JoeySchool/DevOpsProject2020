@@ -1,5 +1,5 @@
 pipeline {
-agent { node {label 'tests'} }
+agent { node {label 'MSBuildSlave'} }
   stages {
     stage('Build') {
       steps {
