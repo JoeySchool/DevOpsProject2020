@@ -54,7 +54,6 @@ import { environment } from 'environments/environment';
     useClass: AuthInterceptor,
     multi: true
   }],
-  bootstrap: [AppComponent],
-  exports: [ apigoogle]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
