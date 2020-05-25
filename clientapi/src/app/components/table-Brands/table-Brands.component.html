@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-md-3 form-group">
+        <input type="text" class=" btn text-light" [(ngModel)]="name" placeholder="Type name here">
+    </div>
+</div>
+
+<div class=" uk-margin-small margin-top">
+    <table class="table lightweight-table" *ngIf=" brandres != null">
+        <!-- <tr class=" text-light">
+            <th><strong><button class=" btn sorted table-info btn-outline-default" (click)="Abc('Casename')">Name<div
+                            *ngIf="tempsort == 'Casename'">
+                            <div *ngIf="Asort == 3">↑</div>
+                            <div *ngIf="Asort == 2">↓</div>
+                        </div></button></strong> </th>
+            <th><button class=" btn btn-outline-default" (click)="Abc('volume')">Volume<div
+                        *ngIf="tempsort == 'volume'">
+                        <div *ngIf="Asort == 3">↑</div>
+                        <div *ngIf="Asort == 2">↓</div>
+                    </div></button> </th>
+            <th> <button class=" btn btn-outline-default" (click)="Abc('gpulength')">GpuLength<div
+                        *ngIf="tempsort == 'gpulength'">
+                        <div *ngIf="Asort == 3">↑</div>
+                        <div *ngIf="Asort == 2">↓</div>
+                    </div></button> </th>
+            <th> <button class=" btn btn-outline-default" (click)="Abc('coolerheight')">Coolerheight<div
+                        *ngIf="tempsort == 'coolerheight'">
+                        <div *ngIf="Asort == 3">↑</div>
+                        <div *ngIf="Asort == 2">↓</div>
+                    </div></button></th>
+            <th> <button class=" btn btn-outline-default" (click)="Abc('cost')">Cost<div *ngIf="tempsort == 'cost'">
+                        <div *ngIf="Asort == 3">↑</div>
+                        <div *ngIf="Asort == 2">↓</div>
+                    </div></button></th>
+        </tr> -->
+        <tr class=" text-light ">
+            <th><strong>Name</strong></th>
+            <th>Founder</th>
+            <th>Founded</th>
+        </tr>
+        <tr *ngFor="let brand of brandres" (click)="dia(brand);" class=" text-light">
+            <th>{{brand.name}}</th>
+            <th> {{brand.founder}}</th>
+            <th>{{brand.founded}}</th>
+        </tr>
+    </table>
+    <div>
+        <div>
+            <button *ngIf="page != 1" (click)="Minus()" type="button" class="btn  "><strong><i
+                        class="nc-icon nc-minimal-left"></i></strong></button>
+            <button type="button" class="btn  "> {{page}} </button>
+            <button *ngIf="page != maxpage" type="button" class="btn  " (click)="Next()"><i
+                    class="nc-icon nc-minimal-right"></i></button>
+                    
+            <button *ngIf="!auth.userData" type="button" class="btn btn-outline-danger  float-right" placement="right"
+                ngbPopover="If you want to add a case, you have to be signed in!"
+                popoverTitle="Not logged in!!">
+                + Add Brand
+            </button>
+            <button *ngIf="auth.userData" (click)="openPostDialog()" type="button" class="btn btn-outline-danger  float-right" placement="right">
+                + Add Brand
+            </button>
+        </div>
+    </div>
+</div>

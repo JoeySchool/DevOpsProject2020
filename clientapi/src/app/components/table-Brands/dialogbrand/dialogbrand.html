@@ -1,0 +1,83 @@
+<h1 class=" border-bottom">{{brand.name}} </h1>
+<p *ngFor="let alert of alerts">
+    <ngb-alert [type]="alert.type" [dismissible]="false">
+        <div class="container">
+            <ng-container *ngIf="alert.icon">
+                <i class="nc-icon {{alert.icon}}"></i>
+            </ng-container>
+
+            {{ alert.message }}
+            <button type="button" name="button" class="close" (click)="closeAlert(alert)">
+                <i class="nc-icon nc-simple-remove"></i>
+            </button>
+        </div>
+    </ngb-alert>
+</p>
+<ngb-tabset [justify]="'center'">
+    <ngb-tab class=" text-light" title="Brand">
+        <ng-template ngbTabContent>
+
+            <div *ngIf="brand &&!clicked ">
+                <h3> {{brand.name}}</h3>
+                <p> Founder: {{brand.founder}}</p>
+                <p> Ceo: {{brand.ceo}}</p>
+                <p> Founded: {{brand.founded}}</p>
+                <p> Headquarters: {{brand.headquarters}}
+            </div>
+            
+            <div *ngIf="clicked">
+                <table class=" text-left">
+                    <tr>
+                        <th>Name: </th>
+                        <th class=" text-left" > <input [(ngModel)]="Name"
+                            class=" form-control uk-margin-small d-inline" style="width: 67.5%;"
+                            placeholder="{{brand.name}}"> </th>
+                    </tr>
+                    <tr>
+                        <th>Founder: </th>
+                        <th class=" text-left" > <input [(ngModel)]="Founder"
+                            class=" form-control uk-margin-small d-inline" style="width: 67.5%;"
+                            placeholder="{{brand.founder}}"> </th>
+                    </tr>
+                    <tr>
+                        <th>Ceo: </th>
+                        <th class=" text-left" > <input [(ngModel)]="Ceo"
+                            class=" form-control uk-margin-small d-inline" style="width: 67.5%;"
+                            placeholder="{{brand.ceo}}"> </th>
+                    </tr>
+                    <tr>
+                        <th>Founded: </th>
+                        <th class=" text-left" > <input [(ngModel)]="Founded"
+                            class=" form-control uk-margin-small d-inline" style="width: 67.5%;"
+                            placeholder="{{brand.founded}}"> </th>
+                    </tr>
+                    <tr>
+                        <th>HeadQuarter: </th>
+                        <th class=" text-left" > <input [(ngModel)]="HeadQuarter"
+                            class=" form-control uk-margin-small d-inline" style="width: 67.5%;"
+                            placeholder="{{brand.headquarters}}"> </th>
+                    </tr>
+                   
+                </table>
+            </div>
+            <small *ngIf="!clicked"> Is something Wrong? Edit the info Here!</small>
+                    <button *ngIf="!clicked" class="btn" (click)='Edit()'> Edit</button>
+                    <button *ngIf="clicked" class="btn" (click)='clicked=false;'> Cancel</button>
+                    <button *ngIf="clicked" class="btn" (click)='clicked=false; Apply()'> Apply</button>
+        </ng-template>
+    </ngb-tab>
+    <ngb-tab class=" text-light" title="Cases">
+        <ng-template ngbTabContent>
+            <table class="table lightweight-table">
+                <tr>
+                    <th>Name</th>
+
+                </tr>
+                <tr *ngFor="let case of cases">
+                    <th>{{case.caseName}}</th>
+                 </tr>
+            </table>
+        </ng-template>
+    </ngb-tab>
+</ngb-tabset>
+

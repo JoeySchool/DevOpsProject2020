@@ -1,0 +1,166 @@
+<p *ngFor="let alert of alerts">
+    <ngb-alert [type]="alert.type" [dismissible]="false">
+        <div class="container">
+            <ng-container *ngIf="alert.icon">
+                <i class="nc-icon {{alert.icon}}"></i>
+            </ng-container>
+
+            {{ alert.message }}
+            <button type="button" name="button" class="close" (click)="closeAlert(alert)">
+                <i class="nc-icon nc-simple-remove"></i>
+            </button>
+        </div>
+    </ngb-alert>
+</p>
+<div class=" border-bottom text-center">
+    <h2>Add Case</h2>
+</div>
+<div class=" container margin-top border-bottom">
+    <div class=" row">
+        <table style="width: 80%">
+            <tr>
+                <th>Name: </th>
+                <th> <input [(ngModel)]="case.name" class=" form-control uk-margin-small d-inline" placeholder="Ncase M1">
+                </th>
+            </tr>
+            <tr>
+                <th>Link: </th>
+                <th> <input [(ngModel)]="case.caseurl" class=" form-control uk-margin-small d-inline"
+                        placeholder="https://ncases.com/products/m1"> </th>
+            </tr>
+            <!-- <tr>
+                <th>Brand: </th>
+                <th><select (change)="brand($event.target.value)" class=" form-control select">
+                        <option>Choose a brand</option>
+                        <option *ngFor="let brand of getData.allBrands; let i = index" value={{i}}>{{brand.name}}</option>
+                    </select>
+            </tr> -->
+        </table>
+    </div>
+    <div class="row margin-top">
+
+        <div class="col-md-6">
+            <div class="form-group ">
+                <table class=" text-left">
+                    <tr>
+                        <th>Type: </th>
+                        <th class=" text-left"> <input [(ngModel)]="case.type" class=" form-control uk-margin-small d-inline"
+                                style="width: 80%;" placeholder="mini-ITX"> </th>
+                    </tr>
+                    <tr>
+                        <th>Volume: </th>
+                        <th><input type="number" [(ngModel)]="case.volume" class=" form-control uk-margin-small d-inline"
+                                style="width: 80%;" placeholder="12.6l"></th>
+                    </tr>
+                    <tr>
+                        <th>Footprint: </th>
+                        <th><input type="number" [(ngModel)]="case.footprint" class=" form-control uk-margin-small d-inline"
+                                style="width: 80%;" placeholder="81mm²"> </th>
+                    </tr>
+
+                    <tr>
+                        <th>Psu-Type: </th>
+                        <th> <input [(ngModel)]="case.psuType" class=" form-control uk-margin-small d-inline"
+                                style="width: 80%;" placeholder="SFX(L)"></th>
+                    </tr>
+
+                    <tr>
+                        <th>Expansion slots: </th>
+                        <th><input type="number" [(ngModel)]="case.expansionSlots"
+                                class=" form-control uk-margin-small d-inline" style="width: 80%;"
+                                placeholder="3 slots"></th>
+                    </tr>
+
+                    <tr>
+                        <th>Fan support: </th>
+                        <th><input [(ngModel)]="case.fanSupport" class=" form-control uk-margin-small d-inline"
+                                style="width: 80%;" placeholder="S: 2x120mm, B: 2x120mm, R: 1x92mm"></th>
+                    </tr>
+
+
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group ">
+                <table class=" text-left">
+                    <tr>
+                        <th>Cost: </th>
+                        <th class=" text-left"> <input [(ngModel)]="case.cost" type="number"
+                                class=" form-control uk-margin-small d-inline" style="width: 80%;" placeholder="210 $">
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th>Measurements (l, w, h): </th>
+                        <th>
+                            <input type="number" [(ngModel)]="case.l" class=" form-control uk-margin-small d-inline" style="width: 20%;" placeholder="328"> x 
+                            <input type="number" [(ngModel)]="case.w" class=" form-control uk-margin-small d-inline" style="width: 20%;" placeholder="160"> x
+                            <input type="number" [(ngModel)]="case.h" class=" form-control uk-margin-small d-inline" style="width: 20%;"
+                                placeholder="240"></th>
+                    </tr>
+
+                    <tr>
+                        <th>Storage: </th>
+                        <th> <input [(ngModel)]="case.storage" class=" form-control uk-margin-small d-inline"
+                                style="width: 80%;" placeholder="2xHDD + 2xSSD + 1xANY"></th>
+                    </tr>
+
+                    <tr>
+                        <th>Max Gpu Length: </th>
+                        <th><input type="number" [(ngModel)]="case.gpuLength" class=" form-control uk-margin-small d-inline"
+                                style="width: 80%;" placeholder="317mm"> </th>
+                    </tr>
+
+                    <tr>
+                        <th>Max CoolerHeight: </th>
+                        <th><input type="number" [(ngModel)]="case.coolerHeight"
+                                class=" form-control uk-margin-small d-inline" style="width: 80%;" placeholder="130mm">
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th>Radiator support: </th>
+                        <th><input [(ngModel)]="case.radiatorSupport" class=" form-control uk-margin-small d-inline"
+                                style="width: 80%;" placeholder="S: 240mm"></th>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class=" row">
+        <table style="width: 80%">
+            <tr>
+                <th>Comments: </th>
+                <th> <input [(ngModel)]="case.comments" class=" form-control uk-margin-small d-inline"
+                        placeholder="GPU: 111-140mm(W), can fit motherboards up to 226mm x 174mm with ATX PSU and up to 226mm x 95mm when using an SFX PSU with the ATX bracket">
+                </th>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class=" float-right">
+
+    <button (click)="Cancel()" class="btn " style="margin: 5px;">Cancel</button>
+    
+    <div *ngIf=" this.case.name==undefined || this.case.name =='' || this.case.cost==undefined || this.case.cost=='';then thenBlock else elseBlock"> </div>
+
+    <ng-template #thenBlock>
+        <button class="btn btn-danger" style="margin: 5px;"
+            ngbPopover="Name and cost are required" popoverTitle="Not everything filled in!!">
+            Add Case
+        </button>
+    </ng-template>
+
+    <ng-template #elseBlock>
+        <button  (click)="AddCase()" class="btn btn-danger" style="margin: 5px;">
+            Add Case
+        </button>
+    </ng-template>
+
+
+
+
+</div>

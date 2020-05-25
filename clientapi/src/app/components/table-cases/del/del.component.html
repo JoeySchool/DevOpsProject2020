@@ -1,0 +1,12 @@
+<div >
+    <h1 mat-dialog-title class=" pb-2 mb-3 border-bottom">Are you sure? </h1>
+    <div mat-dialog-content class=" pb-2  border-bottom">
+      <p>After pressing 'yes' your case will be deleted and the data will be gone!</p>
+     
+    </div>
+    <div mat-dialog-actions>
+      
+      <button  class="btn " (click)="onNoClick()" style="margin: 5px;">No Thanks</button>
+      <button  class=" btn btn-danger" (click)="onYesClick()" style="margin: 5px;">Yes, i'm sure</button>
+    </div>
+  </div>

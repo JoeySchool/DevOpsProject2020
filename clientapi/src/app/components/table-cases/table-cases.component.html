@@ -1,0 +1,102 @@
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group ">
+            <input type="text" class=" btn text-light" [(ngModel)]="name" placeholder="Type name here">
+
+
+
+
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group ">
+            <p class=" text-capitalize text-light"> Price: {{doubleSliderPrice[0]}} - {{doubleSliderPrice[1]}} euro</p>
+            <nouislider class="slider slider-info" [connect]="true" [min]="0" [max]="300" [step]="1"
+                [(ngModel)]="doubleSliderPrice" [tooltips]="false"></nouislider>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group ">
+            <p class=" text-capitalize text-light"> Volume: {{doubleSliderVolume[0]}} - {{doubleSliderVolume[1]}}l</p>
+            <nouislider class="slider slider-info" [connect]="true" [min]="0" [max]="60" [step]="1"
+                [(ngModel)]="doubleSliderVolume" [tooltips]="false"></nouislider>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group ">
+            <p class=" text-capitalize text-light">Max gpu Length : {{doubleSliderGpu[0]}} - {{doubleSliderGpu[1]}} mm
+            </p>
+            <nouislider class="slider slider-info" [connect]="true" [min]="0" [max]="600" [step]="1"
+                [(ngModel)]="doubleSliderGpu" [tooltips]="false"></nouislider>
+        </div>
+    </div>
+</div>
+<div class=" center margin-top">
+    <span (click)="removeLabel('name')" *ngIf="lname" class="label label-primary">Name: {{localname}}</span>
+    <span (click)="removeLabel('price')" *ngIf="lprice" class="label label-info">Price: {{localprice[0]}} -
+        {{localprice[1]}} euro</span>
+    <span (click)="removeLabel('volume')" *ngIf="lvolume" class="label label-success">Volume: {{localVolume[0]}} -
+        {{localVolume[1]}}l </span>
+    <span (click)="removeLabel('gpu')" *ngIf="lgpu" class="label label-warning">max GpuLength: {{localgpu[0]}} -
+        {{localgpu[1]}}mm </span>
+    <br>
+    <button class=" btn-danger btn" (click)="Filter()">Search</button>
+    <div class=" text-light"> <small>{{totalresults}} results</small> </div>
+</div>
+
+<div class=" uk-margin-small margin-top">
+    <table class="table lightweight-table" *ngIf=" caseData != null">
+        <tr class=" text-light">
+            <th><strong><button class=" btn sorted table-info btn-outline-default" (click)="Abc('Casename')">Name<div
+                            *ngIf="tempsort == 'Casename'">
+                            <div *ngIf="Asort == 3">↑</div>
+                            <div *ngIf="Asort == 2">↓</div>
+                        </div></button></strong> </th>
+            <th><button class=" btn btn-outline-default" (click)="Abc('volume')">Volume<div
+                        *ngIf="tempsort == 'volume'">
+                        <div *ngIf="Asort == 3">↑</div>
+                        <div *ngIf="Asort == 2">↓</div>
+                    </div></button> </th>
+            <th> <button class=" btn btn-outline-default" (click)="Abc('gpulength')">GpuLength<div
+                        *ngIf="tempsort == 'gpulength'">
+                        <div *ngIf="Asort == 3">↑</div>
+                        <div *ngIf="Asort == 2">↓</div>
+                    </div></button> </th>
+            <th> <button class=" btn btn-outline-default" (click)="Abc('coolerheight')">Coolerheight<div
+                        *ngIf="tempsort == 'coolerheight'">
+                        <div *ngIf="Asort == 3">↑</div>
+                        <div *ngIf="Asort == 2">↓</div>
+                    </div></button></th>
+            <th> <button class=" btn btn-outline-default" (click)="Abc('cost')">Cost<div *ngIf="tempsort == 'cost'">
+                        <div *ngIf="Asort == 3">↑</div>
+                        <div *ngIf="Asort == 2">↓</div>
+                    </div></button></th>
+        </tr>
+        <tr *ngFor="let case of caseData" (click)="Test(case);" class=" text-light">
+            <th>{{case.caseName}}</th>
+            <th> {{case.volume}}l</th>
+            <th>{{case.gpuLength}}mm</th>
+            <th>{{case.coolerHeight}}mm </th>
+            <th>{{case.cost}} $</th>
+
+        </tr>
+    </table>
+    <div>
+        <div>
+            <button *ngIf="page1 != 1" (click)="Minus()" type="button" class="btn  "><strong><i
+                        class="nc-icon nc-minimal-left"></i></strong></button>
+            <button type="button" class="btn  "> {{page1}} </button>
+            <button *ngIf="page1 != maxpage" type="button" class="btn  " (click)="Next()"><i
+                    class="nc-icon nc-minimal-right"></i></button>
+                    
+            <button *ngIf="!auth.userData" type="button" class="btn btn-outline-danger  float-right" placement="right"
+                ngbPopover="If you want to add a case, you have to be signed in!"
+                popoverTitle="Not logged in!!">
+                + Add case
+            </button>
+            <button *ngIf="auth.userData" (click)="openPostDialog()" type="button" class="btn btn-outline-danger  float-right" placement="right">
+                + Add case
+            </button>
+        </div>
+    </div>
+</div>

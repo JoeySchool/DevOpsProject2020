@@ -1,0 +1,176 @@
+<p *ngFor="let alert of alerts">
+    <ngb-alert [type]="alert.type" [dismissible]="false">
+        <div class="container">
+            <ng-container *ngIf="alert.icon">
+                <i class="nc-icon {{alert.icon}}"></i>
+            </ng-container>
+
+            {{ alert.message }}
+            <button type="button" name="button" class="close" (click)="closeAlert(alert)">
+                <i class="nc-icon nc-simple-remove"></i>
+            </button>
+        </div>
+    </ngb-alert>
+</p>
+<h2 class=" text-center  border-bottom"><a target="_blank" href="{{case.productLink}}">{{case.caseName}}</a>
+    <p *ngIf="ifbrand"><small>Made by: {{brand.name}}</small></p>
+</h2>
+<br>
+<!-- <p *ngFor="let item of TEST">{{item}}</p> -->
+<!-- <h3 class="text-center  border-bottom">brand: {{case.Brand}}</h3> -->
+
+<div class="nav-tabs-navigation">
+    <div class="nav-tabs-wrapper">
+        <ngb-tabset [justify]="'center'">
+            <ngb-tab class=" text-light" title="Specs">
+                <ng-template ngbTabContent>
+                    <h3 class="text-center ">Specs:</h3>
+                    <table class=" text-left">
+                        <tr>
+                            <th>Type: </th>
+                            <th *ngIf="!clicked"> {{case.type}}</th>
+                            <th class=" text-left" *ngIf="clicked"> <input [(ngModel)]="type"
+                                    class=" form-control uk-margin-small d-inline" style="width: 67.5%;"
+                                    placeholder="{{case.type}}"> </th>
+                        </tr>
+                        <tr>
+                            <th>Volume: </th>
+                            <th *ngIf="!clicked">{{case.volume}}l</th>
+                            <th *ngIf="clicked"><input type="number" [(ngModel)]="volume"
+                                    class=" form-control uk-margin-small d-inline" style="width: 67.5%;"
+                                    placeholder="{{case.volume}}l"></th>
+                        </tr>
+                        <tr>
+                            <th>Measurements (l, w, h): </th>
+                            <th *ngIf="!clicked">{{case.l}} x {{case.w}} x {{case.h}}</th>
+                            <th *ngIf="clicked"><input type="number" [(ngModel)]="l" class=" form-control uk-margin-small d-inline"
+                                    style="width: 20%;" placeholder="{{case.l}}"> x <input type="number" [(ngModel)]="w"
+                                    class=" form-control uk-margin-small d-inline" style="width: 20%;"
+                                    placeholder="{{case.w}}"> x <input type="number" [(ngModel)]="h"
+                                    class=" form-control uk-margin-small d-inline" style="width: 20%;"
+                                    placeholder="{{case.h}}"></th>
+                        </tr>
+                        <tr>
+                            <th>Footprint: </th>
+                            <th *ngIf="!clicked"> {{case.footprint}}mm²</th>
+                            <th *ngIf="clicked"><input type="number" [(ngModel)]="footprint"
+                                    class=" form-control uk-margin-small d-inline" style="width: 67.5%;"
+                                    placeholder="{{case.footprint}}mm²"> </th>
+                        </tr>
+                        <tr>
+                            <th>Storage: </th>
+                            <th *ngIf="!clicked"> {{case.storage}}</th>
+                            <th *ngIf="clicked"> <input [(ngModel)]="storage"
+                                    class=" form-control uk-margin-small d-inline" style="width: 67.5%;"
+                                    placeholder="{{case.storage}}"></th>
+                        </tr>
+                        <tr>
+                            <th>Psu-Type: </th>
+                            <th *ngIf="!clicked"> {{case.psuType}}</th>
+                            <th *ngIf="clicked"> <input [(ngModel)]="psuType"
+                                    class=" form-control uk-margin-small d-inline" style="width: 67.5%;"
+                                    placeholder="{{case.psuType}}"></th>
+                        </tr>
+                        <tr>
+                            <th>Max Gpu Length: </th>
+                            <th *ngIf="!clicked"> {{case.gpuLength}}mm</th>
+                            <th *ngIf="clicked"><input type="number" [(ngModel)]="gpuLength"
+                                    class=" form-control uk-margin-small d-inline" style="width: 67.5%;"
+                                    placeholder="{{case.gpuLength}}mm"> </th>
+                        </tr>
+                        <tr>
+                            <th>Expansion slots: </th>
+                            <th *ngIf="!clicked">{{case.expansionSlots}} slot(s)</th>
+                            <th *ngIf="clicked"><input type="number" [(ngModel)]="expansionSlots"
+                                    class=" form-control uk-margin-small d-inline" style="width: 67.5%;"
+                                    placeholder="{{case.expansionSlots}}"></th>
+                        </tr>
+                        <tr>
+                            <th>Max CoolerHeight: </th>
+                            <th *ngIf="!clicked">{{case.coolerHeight}}mm</th>
+                            <th *ngIf="clicked"><input type="number" [(ngModel)]="coolerHeight"
+                                    class=" form-control uk-margin-small d-inline" style="width: 67.5%;"
+                                    placeholder="{{case.coolerHeight}}"></th>
+                        </tr>
+                        <tr>
+                            <th>Fan support: </th>
+                            <th *ngIf="!clicked">{{case.fanSupport}}</th>
+                            <th *ngIf="clicked"><input [(ngModel)]="fanSupport"
+                                    class=" form-control uk-margin-small d-inline" style="width: 67.5%;"
+                                    placeholder="{{case.fanSupport}}"></th>
+                        </tr>
+                        <tr>
+                            <th>Radiator support: </th>
+                            <th *ngIf="!clicked">{{case.radiatorSupport}}</th>
+                            <th *ngIf="clicked"><input [(ngModel)]="radiatorSupport"
+                                    class=" form-control uk-margin-small d-inline" style="width: 67.5%;"
+                                    placeholder="{{case.radiatorSupport}}"></th>
+                        </tr>
+                        <tr>
+                            <th>Comments: </th>
+                            <th *ngIf="!clicked">{{case.comments}}</th>
+                            <th *ngIf="clicked"><input [(ngModel)]="comments"
+                                    class=" form-control uk-margin-small d-inline" style="width: 67.5%;"
+                                    placeholder="{{case.comments}}"></th>
+                        </tr>
+                    </table>
+
+                    <small *ngIf="!clicked"> Is something Wrong? Edit the info Here!</small>
+                    <button *ngIf="!clicked" class="btn" (click)='Edit()'> Edit</button>
+                    <button *ngIf="clicked" class="btn" (click)='clicked=false;'> Cancel</button>
+                    <!-- <button *ngIf="clicked" class="btn" (click)='clicked=false; Apply(typecase.value, volume.value, l.value, w.value, h.value, footprint.value, storage.value, psuType.value, gpuLength.value, expansionSlots.value, coolerHeight.value, radiatorSupport.value, comments.value)'> Apply</button> -->
+                    <button *ngIf="clicked" class="btn" (click)='clicked=false; Apply()'> Apply</button>
+                    <button *ngIf="clicked" class="btn btn-danger " (click)='Delete()'> Delete</button>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab class=" text-light" title="Pictures" (click)="clicked=false">
+                <ng-template ngbTabContent>
+                    <div *ngIf="!boolgoogle" class=" text-center">
+                        <div *ngIf="!boolnodata">
+                            <h2 class=" text-center">
+                                <mat-spinner></mat-spinner>
+                            </h2>
+                        </div>
+                        <div *ngIf="boolnodata">
+                            <p class="text-danger text-center">No images from google</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 mr-auto ml-auto" *ngIf="boolgoogle">
+                            <div class="card page-carousel">
+                                <ngb-carousel>
+                                    <ng-template style="width: 256px; height: 196px;" ngbSlide
+                                        *ngFor="let item of googleJson.items">
+                                        <img width="256px" height="196px" src="{{item.pagemap.metatags[0]['og:image']}}"
+                                            alt="Thanks google for not loading this pic...">
+                                        <div class="carousel-caption">
+                                            <a class=" text-light" target="_blank" href="{{item.link}} " ><small> {{item.title}} </small></a>
+                                        </div>
+                                    </ng-template>
+                                </ngb-carousel>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab class=" text-light" title="Brand" *ngIf="ifbrand|| clicked">
+                <ng-template ngbTabContent>
+                    <div *ngIf="clicked">
+                        <select (change)="setbrand($event.target.value)">
+                            <option disabled selected hidden>Select a brand</option>
+                            <option *ngFor="let brand of getData.allBrands; let i =index" value="{{i}}">{{brand.name}}
+                            </option>
+                        </select> 
+                    </div>
+                    <div *ngIf="ifbrand && !clicked ">
+                        <h3> {{brand.name}}</h3>
+                        <p> Founder: {{brand.founder}}</p>
+                        <p> Ceo: {{brand.ceo}}</p>
+                        <p> Founded: {{brand.founded}}</p>
+                        <p> Headquarters: {{brand.headquarters}}
+                    </div>
+                </ng-template>
+            </ngb-tab>
+        </ngb-tabset>
+    </div>
+</div>
