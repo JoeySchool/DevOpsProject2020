@@ -52,26 +52,26 @@ export class ExcelComponent {
     }, 1000)
   }
 
-  Post(){
-    this.jsonData.Blad1.forEach(x => {
-      // console.log(x)
-      this.getData.PostCases(x.CaseName, x.CaseBrandId, x.ProductLink, x.Cost, x.Type, x.L, x.W, x.H, x.Volume, x.Footprint, x.Storage, x.PsuType, x.GPULength, x.ExpansionSlots, x.CoolerHeight, x.FanSupport, x.RadiatorSupport, x.Comments)
-      .subscribe( y =>{
-        console.log(y);
-      })
-    });
-  }
   // Post(){
-  //       this.jsonData.Sheet1.forEach(x => {
-      
-          
-
-  //     this.getData.PostBrands(x.Name, x.Founded)
+  //   this.jsonData.Blad1.forEach(x => {
+  //     // console.log(x)
+  //     this.getData.PostCases(x.CaseName, x.CaseBrandId, x.ProductLink, x.Cost, x.Type, x.L, x.W, x.H, x.Volume, x.Footprint, x.Storage, x.PsuType, x.GPULength, x.ExpansionSlots, x.CoolerHeight, x.FanSupport, x.RadiatorSupport, x.Comments)
   //     .subscribe( y =>{
   //       console.log(y);
   //     })
   //   });
   // }
+  Post(){
+        this.jsonData.Sheet1.forEach(x => {
+      
+          
+
+      this.getData.PostBrands(x.Name, x.Founded)
+      .subscribe( y =>{
+        console.log(y);
+      })
+    });
+  }
   Test(value){
     console.log(value);
   }

@@ -53,7 +53,7 @@ export class GetDataService {
   ) {
     var case1 = {
       CaseName: caseName,
-      CaseBrandId: caseBrand,
+      CaseBrand: null ,
       ProductLink: pLink,
       Cost: cost,
       Type: Type,

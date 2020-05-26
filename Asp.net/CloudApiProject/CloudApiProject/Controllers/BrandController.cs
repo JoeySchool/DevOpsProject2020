@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CloudApiProject.Data;
 using CloudApiProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -27,7 +28,7 @@ namespace CloudApiProject.Controllers
             IQueryable<Brand> query = context.Brands;
 
             if (!string.IsNullOrWhiteSpace(brand))
-                query = query.Where(d => d.Name == brand);
+                query = query.Where(d => d.Name.Contains(brand));
 
             if (!string.IsNullOrWhiteSpace(sort)){
                 switch (sort)
@@ -50,11 +51,30 @@ namespace CloudApiProject.Controllers
 
             return query.ToList();
         }
+
+        [Route("v2")]
+        [HttpGet]
+        public async Task<ActionResult<ApiBrandResult<Brand>>> getpaging(
+            int pageIndex = 0, 
+            int pageSize = 10,
+            string sortColumn = null,
+            string sortOrder = null
+
+            )
+        {
+            return await ApiBrandResult<Brand>.CreateAsync(
+                context.Brands,
+                pageIndex,
+                pageSize,
+                sortColumn,
+                sortOrder
+                );
+        }
         [Route("{id}")]
         [HttpGet]
-        public IActionResult getCase(int id)
+        public  ActionResult<Brand> getBrand(int id)
         {
-            var Brand = context.Brands
+            var Brand =  context.Brands
                 .Include(d => d.cases)
                 .SingleOrDefault(d => d.Id == id);
 
@@ -63,8 +83,25 @@ namespace CloudApiProject.Controllers
                 return NotFound();
             }
 
-            return Ok(Brand);
+            return Brand;
         }
+        [Route("casesfromBrand/{id}")]
+        [HttpGet]
+        public IActionResult getCasesFromBrand(int id)
+        {
+           var Brand =  context.Brands
+              .Include(d => d.cases)
+              .SingleOrDefault(d => d.Id == id);
+
+            var Cases = Brand.cases;
+            if (Brand == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(Cases);
+        }
+
         [Authorize]
         [Route("{id}")]
         [HttpDelete]
@@ -80,12 +117,13 @@ namespace CloudApiProject.Controllers
             //standaard response 204 bij gelukte delete
             return NoContent();
         }
+        //api/brand/id
         [Authorize]
         [Route("{id}")]
         [HttpPut]
-        public IActionResult UpdateBrand([FromBody] Brand updateBrand)
+        public IActionResult UpdateBrand([FromBody] Brand updateBrand, int id)
         {
-            var orgBrand = context.Brands.Find(updateBrand.Id);
+            var orgBrand = context.Brands.Find(id);
             if (orgBrand == null)
                 return NotFound();
 

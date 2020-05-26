@@ -27,7 +27,7 @@ namespace CloudApiProject
 
             
             services.AddDbContext<LibraryContext>(
-                options => options.UseSqlServer(
+                options => options.UseMySQL(
                     Configuration.GetConnectionString("DefaultConnection")
                 )
             );
@@ -57,10 +57,6 @@ namespace CloudApiProject
             {
                 app.UseDeveloperExceptionPage();
             }
-
-
-
-
                 app.UseHttpsRedirection();
 
                 app.UseCors(builder =>

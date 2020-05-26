@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { GetDataService } from 'app/shared/Services/get-data.service';
 import { AuthService } from 'app/shared/Services/auth.service';
 import { ToastrService } from 'ngx-toastr';
-import { IAlert } from 'app/components/table-cases/table-cases.component';
+
 
 @Component({
   selector: 'app-dialogbrand',
@@ -79,3 +79,9 @@ console.log(res)
   }
 }
 
+export interface IAlert {
+  id: number;
+  type: string;
+  message: string;
+  icon?: string;
+}

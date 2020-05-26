@@ -16,6 +16,10 @@ namespace CloudApiProject.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            
+
+
             //modelBuilder.Entity<Gpucase>()
             //    .HasKey(gpucase => new { gpucase.CaseId, gpucase.GpuId });
 

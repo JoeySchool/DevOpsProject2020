@@ -1,0 +1,16 @@
+C:\Users\grYs\SynologyDrive\school\2019-2020\trim 2\cloud api\CloudApiProject\Asp.net\CloudApiProject\.vs\CloudApiProject\v16\lut\0\b\CloudApiProject\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\grYs\SynologyDrive\school\2019-2020\trim 2\cloud api\CloudApiProject\Asp.net\CloudApiProject\.vs\CloudApiProject\v16\lut\0\b\CloudApiProject\Debug\netcoreapp3.1\appsettings.json
+C:\Users\grYs\SynologyDrive\school\2019-2020\trim 2\cloud api\CloudApiProject\Asp.net\CloudApiProject\.vs\CloudApiProject\v16\lut\0\b\CloudApiProject\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\grYs\SynologyDrive\school\2019-2020\trim 2\cloud api\CloudApiProject\Asp.net\CloudApiProject\.vs\CloudApiProject\v16\lut\0\b\CloudApiProject\Debug\netcoreapp3.1\CloudApiProject.exe
+C:\Users\grYs\SynologyDrive\school\2019-2020\trim 2\cloud api\CloudApiProject\Asp.net\CloudApiProject\.vs\CloudApiProject\v16\lut\0\b\CloudApiProject\Debug\netcoreapp3.1\CloudApiProject.deps.json
+C:\Users\grYs\SynologyDrive\school\2019-2020\trim 2\cloud api\CloudApiProject\Asp.net\CloudApiProject\.vs\CloudApiProject\v16\lut\0\b\CloudApiProject\Debug\netcoreapp3.1\CloudApiProject.runtimeconfig.json
+C:\Users\grYs\SynologyDrive\school\2019-2020\trim 2\cloud api\CloudApiProject\Asp.net\CloudApiProject\.vs\CloudApiProject\v16\lut\0\b\CloudApiProject\Debug\netcoreapp3.1\CloudApiProject.runtimeconfig.dev.json
+C:\Users\grYs\SynologyDrive\school\2019-2020\trim 2\cloud api\CloudApiProject\Asp.net\CloudApiProject\.vs\CloudApiProject\v16\lut\0\b\CloudApiProject\Debug\netcoreapp3.1\CloudApiProject.dll
+C:\Users\grYs\SynologyDrive\school\2019-2020\trim 2\cloud api\CloudApiProject\Asp.net\CloudApiProject\.vs\CloudApiProject\v16\lut\0\i\CloudApiProject\Debug\netcoreapp3.1\CloudApiProject.csprojAssemblyReference.cache
+C:\Users\grYs\SynologyDrive\school\2019-2020\trim 2\cloud api\CloudApiProject\Asp.net\CloudApiProject\.vs\CloudApiProject\v16\lut\0\i\CloudApiProject\Debug\netcoreapp3.1\staticwebassets\CloudApiProject.StaticWebAssets.Manifest.cache
+C:\Users\grYs\SynologyDrive\school\2019-2020\trim 2\cloud api\CloudApiProject\Asp.net\CloudApiProject\.vs\CloudApiProject\v16\lut\0\i\CloudApiProject\Debug\netcoreapp3.1\staticwebassets\CloudApiProject.StaticWebAssets.xml
+C:\Users\grYs\SynologyDrive\school\2019-2020\trim 2\cloud api\CloudApiProject\Asp.net\CloudApiProject\.vs\CloudApiProject\v16\lut\0\i\CloudApiProject\Debug\netcoreapp3.1\CloudApiProject.AssemblyInfoInputs.cache
+C:\Users\grYs\SynologyDrive\school\2019-2020\trim 2\cloud api\CloudApiProject\Asp.net\CloudApiProject\.vs\CloudApiProject\v16\lut\0\i\CloudApiProject\Debug\netcoreapp3.1\CloudApiProject.AssemblyInfo.cs
+C:\Users\grYs\SynologyDrive\school\2019-2020\trim 2\cloud api\CloudApiProject\Asp.net\CloudApiProject\.vs\CloudApiProject\v16\lut\0\i\CloudApiProject\Debug\netcoreapp3.1\CloudApiProject.RazorTargetAssemblyInfo.cache
+C:\Users\grYs\SynologyDrive\school\2019-2020\trim 2\cloud api\CloudApiProject\Asp.net\CloudApiProject\.vs\CloudApiProject\v16\lut\0\i\CloudApiProject\Debug\netcoreapp3.1\CloudApiProject.csproj.CopyComplete
+C:\Users\grYs\SynologyDrive\school\2019-2020\trim 2\cloud api\CloudApiProject\Asp.net\CloudApiProject\.vs\CloudApiProject\v16\lut\0\i\CloudApiProject\Debug\netcoreapp3.1\CloudApiProject.dll

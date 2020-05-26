@@ -10,7 +10,8 @@ namespace CloudApiProject
 {
     public partial class Case
     {
-       
+        internal object[] id;
+
         public int Id { get; set; }
         [Required]
         public string CaseName { get; set; }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CloudApiProject.Data;
 using CloudApiProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -24,7 +25,17 @@ namespace CloudApiProject.Controllers
 
 
         [HttpGet]
-        public List<Case> GetAllCases(string name, int? pricemax, int? pricemin,int? gpuLengthMax, int? gpuLengthMin, int? volumeMin, int? volumeMax, int? page, string sort, int length = 10, string dir = "asc")
+        public List<Case> GetAllCases(string name, 
+            int? pricemax, 
+            int? pricemin,
+            int? gpuLengthMax, 
+            int? gpuLengthMin, 
+            int? volumeMin, 
+            int? volumeMax, 
+            int? page, 
+            string sort, 
+            int length = 10, 
+            string dir = "asc")
         {
             IQueryable<Case> query = context.Cases;
 
@@ -108,6 +119,49 @@ namespace CloudApiProject.Controllers
             
                 
         }
+
+
+
+        // GET: api/Case/test/?pageIndex=0&pageSize=10&sortColumn=name&sortOrder=asc
+
+
+        [Route("v2")]
+        [HttpGet]
+        public async Task<ActionResult<ApiResult<Case>>> GetCases(
+            int pageIndex = 0, 
+            int pageSize = 10, 
+            string sortColumn = null, 
+            string sortOrder = null,
+            string filterColumn = null,
+            string filterQuery = null,
+            int? pricemax = null, 
+            int? pricemin = null, 
+            int? gpuLengthMax = null, 
+            int? gpuLengthMin = null, 
+            int? volumeMin = null, 
+            int? volumeMax = null
+            )
+        {
+            return await ApiResult<Case>.CreateAsync(
+            context.Cases,
+            pageIndex,
+            pageSize,
+
+            pricemax,
+            pricemin,
+            gpuLengthMax,
+            gpuLengthMin,
+            volumeMin,
+            volumeMax,
+
+            sortColumn,
+            sortOrder,
+            filterColumn,
+            filterQuery
+            );
+
+        }
+
         [Authorize]
         [Route("hi")]
         [HttpGet]
@@ -117,16 +171,6 @@ namespace CloudApiProject.Controllers
         }
 
 
-        [Route("gpulength={length}")]
-        [HttpGet]
-        public List<Case> getCasesWithMaxGpuLength(double length)
-        {
-            IQueryable<Case> query = context.Cases;
-            query = query.Where(d => d.GPULength >= length);
-
-            return query.ToList();
-
-        }
 
         [Route("{id}")]
         [HttpGet]
@@ -148,18 +192,23 @@ namespace CloudApiProject.Controllers
         [HttpGet]
         public IActionResult GetBrandfromCase(int id)
         {
+
             var Case = context.Cases
                 .Include(d => d.CaseBrand)
-                .SingleOrDefault(d => d.Id == id); 
+                .SingleOrDefault(d => d.Id == id);
+
             
-            var brand = Case.CaseBrand;
+            
+
 
             if (Case == null)
             {
-                return NotFound("Case with id: "+ id + " does not exist!");
+                return BadRequest("Case with id: "+ id + " does not  have a brand");
             }
+            var brand = Case.CaseBrand;
+
             if (brand == null)
-                return NotFound("Case with id: " + id + " does not have a brand assigned");
+                return BadRequest("Case with id: " + id + " does not have a brand assigned");
 
             return Ok(brand);
         }
@@ -186,13 +235,13 @@ namespace CloudApiProject.Controllers
         [Authorize]
         [Route("{id}")]
         [HttpPut]
-        public IActionResult UpdateCase( [FromBody] Case updateCase)
+        public IActionResult UpdateCase([FromBody] Case updateCase, int id)
         {
             var orgCase = context.Cases.Find(updateCase.Id);
             if (orgCase == null)
-                return NotFound();
+                return BadRequest();
 
-            
+            orgCase.CaseBrand = updateCase.CaseBrand;
             orgCase.Cost = updateCase.Cost;
             orgCase.Type = updateCase.Type;
             orgCase.L = updateCase.L;

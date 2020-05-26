@@ -8,7 +8,6 @@ import { RouterModule } from '@angular/router';
 
 import { TableBrandsComponent } from './table-Brands/table-Brands.component';
 import { TableCasesComponent } from './table-cases/table-cases.component';
-import { CaseDialog } from './table-cases/table-cases.component';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -17,6 +16,7 @@ import { PostDialogC } from './table-cases/post-dialog/post-dialog';
 import { Dialogbrand } from './table-Brands/dialogbrand/dialogbrand';
 import { DialogbrandPost } from './table-Brands/dialogbrand-post/dialogbrand-post';
 import { DelComponent } from './table-cases/del/del.component';
+import { CasedialogComponent } from './table-cases/casedialog/casedialog.component';
 //firebase
 
 
@@ -37,15 +37,15 @@ import { DelComponent } from './table-cases/del/del.component';
     declarations: [
         TableBrandsComponent,
         TableCasesComponent,
-        CaseDialog,
         PostDialogC,
         Dialogbrand,
         DialogbrandPost,
         DelComponent,
+        CasedialogComponent,
         
             
     ],
 
-    exports:[ TableCasesComponent, TableBrandsComponent,PostDialogC, Dialogbrand, DialogbrandPost, DelComponent ]
+    exports:[ TableCasesComponent, TableBrandsComponent,PostDialogC, Dialogbrand, DialogbrandPost, DelComponent, CasedialogComponent ]
 })
 export class ComponentsModule { }
