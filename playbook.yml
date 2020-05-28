@@ -3,10 +3,6 @@
   become_method: sudo
   become_user: root
   tasks:
-  - name: Setup ansible
-    command: 
-      cmd: ansible all -m setup
-
   - name: Apt-get update & upgrade
     apt:
       upgrade: yes
