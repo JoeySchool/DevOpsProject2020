@@ -143,7 +143,7 @@
 
   - name: Restart apache2
     command:
-      cmd: systemctl restart apache2.service
+      cmd: service apache2 restart
     become: true
 
 # Dotnet backend
