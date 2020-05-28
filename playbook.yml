@@ -48,6 +48,12 @@
   - name: Dpkg Microsoft package
     command:
       cmd: dpkg -i packages-microsoft-prod.deb
+  
+  - name: Add add-apt-repository
+    apt:
+      name: software-properties-common
+      state: present
+    become: true
 
   - name: Add universe repo
     command:
