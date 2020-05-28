@@ -171,18 +171,3 @@
   - name: Run Asp.net script
     shell: /project/Asp.net/CloudApiProject/StartASP.sh
 
-#  - name: Dotnet publish backend
-#    command:
-#      cmd: dotnet publish /project/Asp.net/CloudApiProject/CloudApiProject/CloudApiProject.csproj
-#    become: true
-
-#  - name: Dotnet start backend
-#    command:
-#      cmd: dotnet /project/Asp.net/CloudApiProject/CloudApiProject/bin/Debug/netcoreapp3.1/publish/CloudApiProject.dll
-
-
-# Blijft hangen op deze stap. Als ik dit commando lokaal run, is dit een process.
-#  - name: Dotnet run backend
-#    command:
-#      cmd: dotnet run --project /project/Asp.net/CloudApiProject/CloudApiProject/CloudApiProject.csproj
-
