@@ -1,8 +1,8 @@
 [Development]
-192.168.0.130
+172.17.0.5
 
 [Production]
-192.168.0.117
+172.17.0.6
 
 # This is the default ansible 'hosts' file.
 #
