@@ -3,12 +3,13 @@
   become_method: sudo
   become_user: root
   tasks:
+# Update & upgrade container
   - name: Apt-get update & upgrade
     apt:
       upgrade: yes
       update_cache: yes
     become: true
-
+# Git installeren en downloaden van repo naar projectmap
   - name: Install git
     apt:
       name: git
@@ -34,12 +35,12 @@
       repo: https://github.com/JoeySchool/DevOpsProject2020.git
       dest: /project
       force: true
-
+# Kopieren van apikeys naar juiste locatie
   - name: Copy environments to /project/clientapi/src
     copy:
       src: /home/lector/environments
       dest: /project/clientapi/src
-
+# Packages downloaden en installeren voor het runnen van dotnet omgeving
   - name: Get Microsoft repo key
     command:
       cmd: wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
@@ -67,7 +68,7 @@
       name: dotnet-sdk-3.1
       state: present
     become: true
-
+# Installeren van benodigde omgevingen
   - name: Install ASP.NET runtime
     apt:
       name: aspnetcore-runtime-3.1
@@ -85,7 +86,7 @@
       name: apache2
       state: latest
     become: true
-
+# Downloaden van NodeJS 12 d.m.v. een script
   - name: Download NodeJS
     get_url:
       url: "https://deb.nodesource.com/setup_12.x"
